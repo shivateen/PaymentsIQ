@@ -1,0 +1,13 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*~
+.vscode/
+.idea/
+
+# Node (if tooling is added later)
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
