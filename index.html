@@ -1,110 +1,263 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PaymentsIQ · IPC Certificate Validation</title>
-<meta name="description" content="PaymentsIQ — IPC Certificate Validation. Interim payment certificate validation — a 10-IPC / AED 28M queue with AI benchmark analysis and aberration detection to catch over-certification before payment.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23F08C1E'/%3E%3Ctext x='16' y='22' font-family='Poppins,Arial' font-size='15' font-weight='700' fill='white' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --accent:#F08C1E; --accent2:#F5A93E;
-    --bg:#111110; --panel:#1C1C1C; --ink:#262624;
-    --txt:#EDEDEB; --muted:#9A9A94; --line:rgba(255,255,255,.09);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{min-height:100%}
-  body{
-    font-family:'Poppins',-apple-system,system-ui,sans-serif;color:var(--txt);
-    background:
-      radial-gradient(1100px 600px at 78% -8%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%),
-      radial-gradient(900px 520px at 12% 108%, color-mix(in srgb, var(--accent2) 14%, transparent), transparent 60%),
-      var(--bg);
-    display:flex;flex-direction:column;min-height:100vh;
-  }
-  .wrap{max-width:1060px;margin:0 auto;padding:34px 26px 60px;width:100%}
-  header{display:flex;align-items:center;gap:11px}
-  .logo{width:34px;height:34px;border-radius:9px;background:var(--accent);display:flex;align-items:center;
-    justify-content:center;font-weight:700;color:#fff;font-size:17px}
-  .brand{font-size:14px;font-weight:600}
-  .brand small{display:block;font-size:10.5px;color:var(--muted);font-weight:500}
-  .hero{margin-top:74px}
-  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;
-    letter-spacing:.14em;text-transform:uppercase;color:var(--accent2);
-    border:1px solid var(--line);border-radius:999px;padding:6px 13px;background:rgba(255,255,255,.03)}
-  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 25%,transparent)}
-  h1{font-size:clamp(38px,7vw,68px);line-height:1.02;font-weight:700;margin:20px 0 0;letter-spacing:-.02em}
-  h1 span{background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .tagline{font-size:clamp(17px,2.4vw,22px);color:var(--txt);font-weight:500;margin-top:14px}
-  .blurb{font-size:15px;line-height:1.65;color:var(--muted);max-width:640px;margin-top:14px}
-  .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-  .btn{display:inline-flex;align-items:center;gap:9px;font-size:14.5px;font-weight:600;text-decoration:none;
-    padding:13px 22px;border-radius:11px;cursor:pointer;transition:.16s;border:1px solid transparent}
-  .btn.primary{background:linear-gradient(120deg,var(--accent),var(--accent2));color:#141210;
-    box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 30%,transparent)}
-  .btn.primary:hover{transform:translateY(-2px)}
-  .btn.ghost{border-color:var(--line);color:var(--txt);background:rgba(255,255,255,.02)}
-  .btn.ghost:hover{background:rgba(255,255,255,.06)}
-  .features{margin-top:60px;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-  .feature{display:flex;gap:13px;padding:19px 20px;border:1px solid var(--line);border-radius:14px;
-    background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.012))}
-  .fdot{width:9px;height:9px;border-radius:50%;margin-top:6px;flex:none;
-    background:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 20%,transparent)}
-  .feature h3{font-size:14.5px;font-weight:600;margin-bottom:5px}
-  .feature p{font-size:12.8px;line-height:1.55;color:var(--muted)}
-  footer{margin-top:auto;border-top:1px solid var(--line)}
-  .foot{max-width:1060px;margin:0 auto;padding:20px 26px;display:flex;justify-content:space-between;
-    align-items:center;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
-  .foot b{color:var(--txt);font-weight:600}
-  @media(max-width:720px){.features{grid-template-columns:1fr} .hero{margin-top:48px}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PaymentsIQ · Supplier Claim Validation</title>
+  <meta name="description" content="PaymentsIQ — supplier payment claim validation. A 10-claim / $28M queue with AI benchmark analysis and aberration detection to catch over-billing before payment." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23F7901D'/%3E%3Ctext x='16' y='22' font-family='Inter,Arial' font-size='15' font-weight='700' fill='%23181D27' text-anchor='middle'%3EP%3C/text%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/theme.css" />
+  <style>
+    body { background: var(--canvas); display: flex; flex-direction: column; min-height: 100vh; }
+    .wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 var(--sp-6); }
+
+    .site-header { border-bottom: 1px solid var(--border-subtle); }
+    .site-header .wrap { display: flex; align-items: center; gap: var(--sp-3); height: 72px; }
+
+    .hero {
+      background:
+        radial-gradient(760px 380px at 88% -30%, var(--brand-50), transparent 62%),
+        radial-gradient(600px 320px at 4% 118%, var(--gray-25), transparent 60%),
+        var(--canvas);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: var(--sp-16) 0 var(--sp-16);
+    }
+    .hero h2 { max-width: 15ch; }
+    .hero .lead { max-width: 62ch; }
+    .eyebrow {
+      display: inline-flex; align-items: center; align-self: flex-start; gap: var(--sp-2);
+      border: 1px solid var(--brand-200); background: var(--brand-25);
+      border-radius: var(--radius-pill); padding: 5px var(--sp-3);
+    }
+
+    .statstrip { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: var(--sp-6); }
+    .statstrip > div { border-left: 3px solid var(--brand-500); padding-left: var(--sp-4); }
+    .statstrip .v { font-size: 28px; font-weight: 700; letter-spacing: -.02em; line-height: 1.15; }
+
+    .section { padding: var(--sp-16) 0; }
+    .section--tint { background: var(--surface-page); border-block: 1px solid var(--border-subtle); }
+
+    .feature { padding: var(--sp-6); }
+    .feature .ix {
+      width: 38px; height: 38px; border-radius: var(--radius-md);
+      background: var(--brand-50); color: var(--brand-800);
+      display: grid; place-items: center; margin-bottom: var(--sp-4);
+    }
+
+    .steps { counter-reset: s; }
+    .step { display: flex; gap: var(--sp-4); padding: var(--sp-5) 0; border-bottom: 1px solid var(--border-subtle); }
+    .step:last-child { border-bottom: none; }
+    .step .n {
+      counter-increment: s; flex: none; width: 28px; height: 28px; border-radius: 50%;
+      background: var(--gray-900); color: var(--text-inverse);
+      display: grid; place-items: center; font-size: 12px; font-weight: 700;
+    }
+    .step .n::before { content: counter(s); }
+
+    .site-footer { margin-top: auto; border-top: 1px solid var(--border-subtle); background: var(--surface-page); }
+    .site-footer .wrap { display: flex; align-items: center; gap: var(--sp-4); flex-wrap: wrap; padding-block: var(--sp-5); }
+
+    @media (max-width: 900px) {
+      .statstrip { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .hero { padding: var(--sp-10) 0; }
+    }
+    @media (max-width: 620px) {
+      .statstrip { grid-template-columns: minmax(0,1fr); }
+    }
+  </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <span class="logo">T</span>
-      <div class="brand">DAMAC FinIQ<small>Powered by Tiger Analytics</small></div>
-    </header>
 
-    <section class="hero">
-      <span class="eyebrow"><span class="dot"></span>Finance Transformation · Wave 1 · Live</span>
-      <h1><span>PaymentsIQ</span></h1>
-      <div class="tagline">IPC Certificate Validation</div>
-      <p class="blurb">Interim payment certificate validation — a 10-IPC / AED 28M queue with AI benchmark analysis and aberration detection to catch over-certification before payment.</p>
-      <div class="cta">
-        <a class="btn primary" href="app.html">Launch PaymentsIQ &rarr;</a>
-        <a class="btn ghost" href="#features">Explore capabilities</a>
+  <header class="site-header">
+    <div class="wrap">
+      <span class="brandmark">P</span>
+      <div class="stack">
+        <span class="t-h6">PaymentsIQ</span>
+        <span class="t-caption">Finance AI Platform</span>
       </div>
-    </section>
+      <span class="spacer"></span>
+      <a class="btn btn--ghost btn--sm" href="#how">How it works</a>
+      <a class="btn btn--primary btn--sm" href="app.html">Launch app</a>
+    </div>
+  </header>
 
-    <section class="features" id="features">
-      <div class="feature">
-        <div class="fdot"></div>
-        <div><h3>IPC validation queue</h3><p>10 interim payment certificates, AED 28M in flight, triaged by risk.</p></div>
-      </div>
-      <div class="feature">
-        <div class="fdot"></div>
-        <div><h3>AI benchmark analysis</h3><p>Every line item benchmarked against contract rates and market norms.</p></div>
-      </div>
-      <div class="feature">
-        <div class="fdot"></div>
-        <div><h3>Aberration detection</h3><p>Surface duplicate, front-loaded and over-certified claims automatically.</p></div>
-      </div>
-      <div class="feature">
-        <div class="fdot"></div>
-        <div><h3>Straight-through approval</h3><p>Clean certificates flow through; only exceptions reach a human.</p></div>
-      </div>
-    </section>
-  </div>
+  <!-- ------------------------------------------------------------ Hero -->
+  <section class="hero">
+    <div class="wrap stack gap-5">
+      <span class="eyebrow">
+        <span class="badge__dot" style="background:var(--brand-500)"></span>
+        <span class="t-overline tone-brand" style="color:var(--brand-800)">Prototype · Wave 1 · Demo data</span>
+      </span>
 
-  <footer>
-    <div class="foot">
-      <div><b>PaymentsIQ</b> — part of the DAMAC Finance AI Platform</div>
-      <div>DAMAC &times; <b>Tiger Analytics</b></div>
+      <h2>Catch over-billing before the money leaves.</h2>
+
+      <p class="t-body1 lead tone-secondary">
+        PaymentsIQ validates every supplier payment claim line by line — against the purchase order,
+        the contracted rate schedule and a live benchmark of comparable programs. Clean claims flow
+        straight through. Only the exceptions reach a human.
+      </p>
+
+      <div class="row gap-3 wrap mt-2">
+        <a class="btn btn--primary btn--lg" href="app.html">
+          Launch PaymentsIQ
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+        </a>
+        <a class="btn btn--secondary btn--lg" href="#how">See the workflow</a>
+      </div>
+
+      <div class="statstrip mt-8">
+        <div>
+          <div class="v num">10</div>
+          <div class="t-caption">Supplier claims in the demo queue</div>
+        </div>
+        <div>
+          <div class="v num">$28.0M</div>
+          <div class="t-caption">Claim value awaiting certification</div>
+        </div>
+        <div>
+          <div class="v num">$1.50M</div>
+          <div class="t-caption">Over-claim identified before payment</div>
+        </div>
+        <div>
+          <div class="v num">71%</div>
+          <div class="t-caption">Claims closed with no human touch</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------- Capabilities -->
+  <section class="section">
+    <div class="wrap">
+      <div class="stack gap-2 mb-6">
+        <span class="t-overline">Capabilities</span>
+        <h4>Four things it does on every claim</h4>
+      </div>
+
+      <div class="grid g-4">
+        <article class="card feature">
+          <div class="ix">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 10h19"/></svg>
+          </div>
+          <h6>Claim validation queue</h6>
+          <p class="t-body2 tone-secondary mt-2">
+            Freight, co-pack, packaging and trade claims triaged by risk, with the approval
+            delegation resolved before an analyst opens anything.
+          </p>
+        </article>
+
+        <article class="card feature">
+          <div class="ix">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>
+          </div>
+          <h6>Benchmark analysis</h6>
+          <p class="t-body2 tone-secondary mt-2">
+            Every line item priced against the contracted rate, the maintained norm and comparable
+            programs — so a variance comes with its evidence attached.
+          </p>
+        </article>
+
+        <article class="card feature">
+          <div class="ix">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3 2 20h20z"/><path d="M12 10v4M12 17.5v.01"/></svg>
+          </div>
+          <h6>Aberration detection</h6>
+          <p class="t-body2 tone-secondary mt-2">
+            Duplicate submissions, index-linked charges billed flat, overhead above the contracted
+            cap and repeat over-claim patterns across periods.
+          </p>
+        </article>
+
+        <article class="card feature">
+          <div class="ix">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3l7 3v6c0 4.5-3 7.7-7 9-4-1.3-7-4.5-7-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+          </div>
+          <h6>Straight-through approval</h6>
+          <p class="t-body2 tone-secondary mt-2">
+            Claims that clear all twelve checks release into the payment run automatically, under
+            the delegation already agreed by Finance.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- --------------------------------------------------------- How it works -->
+  <section class="section section--tint" id="how">
+    <div class="wrap grid g-2" style="align-items:start">
+      <div class="stack gap-3">
+        <span class="t-overline">How it works</span>
+        <h4>Three agents, one decision</h4>
+        <p class="t-body1 tone-secondary">
+          The agents run on submission and again each morning before the payment cut-off. Nothing is
+          written back to a source system — PaymentsIQ reads, benchmarks and recommends; a human certifies.
+        </p>
+        <div class="callout callout--brand mt-2">
+          <p class="t-body2">
+            In the demo queue, three claims carry exceptions worth <strong>$1.50M</strong>. The largest is a
+            regional linehaul rate billed at <strong>$2.68 / mile</strong> against a contracted <strong>$2.08</strong>
+            — the third consecutive period with the same pattern.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card__body steps">
+          <div class="step">
+            <span class="n"></span>
+            <div class="stack gap-1">
+              <span class="t-subtitle2 tone-primary">Retrieval Agent</span>
+              <span class="t-body2 tone-secondary">Pulls the claim pack, purchase order, rate schedule and prior payment history from the connected systems.</span>
+            </div>
+          </div>
+          <div class="step">
+            <span class="n"></span>
+            <div class="stack gap-1">
+              <span class="t-subtitle2 tone-primary">Validation Agent</span>
+              <span class="t-body2 tone-secondary">Runs the 12-point check suite and benchmarks every line item against maintained norms and comparable claims.</span>
+            </div>
+          </div>
+          <div class="step">
+            <span class="n"></span>
+            <div class="stack gap-1">
+              <span class="t-subtitle2 tone-primary">Communication Agent</span>
+              <span class="t-body2 tone-secondary">Drafts the vendor query where evidence is missing, and routes the claim to the right approver.</span>
+            </div>
+          </div>
+          <div class="step">
+            <span class="n"></span>
+            <div class="stack gap-1">
+              <span class="t-subtitle2 tone-primary">Analyst decision</span>
+              <span class="t-body2 tone-secondary">Certify in full, part-certify and withhold the disputed value, raise a query, or reject — with the reasoning already assembled.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------- Footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <span class="t-caption">
+        <strong class="tone-primary">PaymentsIQ</strong> — prototype build. All vendors, programs and figures are synthetic.
+      </span>
+      <span class="spacer"></span>
+      <span class="t-caption">Design system: <strong class="tone-primary">Tiger Analytics</strong></span>
     </div>
   </footer>
+
 </body>
 </html>
